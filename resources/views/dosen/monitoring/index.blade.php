@@ -95,7 +95,7 @@
     {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h3 class="fw-bold mb-1 text-dark">Monitoring Mahasiswa</h3>
+            {{-- <h3 class="fw-bold mb-1 text-dark">Monitoring Mahasiswa</h3> --}}
             <p class="text-muted small mb-0">
                 Total <span class="fw-bold text-primary">{{ $mahasiswas->count() }}</span> Mahasiswa Bimbingan
             </p>

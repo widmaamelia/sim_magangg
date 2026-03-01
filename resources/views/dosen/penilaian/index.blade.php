@@ -5,16 +5,7 @@
 @section('content')
 
     {{-- HEADER UTAMA --}}
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="bg-white p-3 rounded shadow-sm border-start border-5 border-primary">
-                <h4 class="mb-0 fw-bold text-dark">Daftar Penilaian Mahasiswa</h4>
-                <p class="text-muted small mb-0">
-                    Kelola nilai mahasiswa bimbingan Amelia secara efisien.
-                </p>
-            </div>
-        </div>
-    </div>
+    
 
     {{-- NOTIFIKASI --}}
     @if (session('success'))
@@ -27,8 +18,7 @@
 
     {{-- HEADER TABLE + DOWNLOAD --}}
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-bold text-dark mb-0">Kelola Nilai Mahasiswa</h5>
-
+        
         {{-- DOWNLOAD PDF PER KELAS --}}
         <div class="btn-group shadow-sm">
             <button type="button" class="btn btn-outline-danger dropdown-toggle px-3" data-bs-toggle="dropdown">

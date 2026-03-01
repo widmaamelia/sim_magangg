@@ -11,9 +11,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Mengambil data mahasiswa yang dibimbing oleh dosen yang sedang login
-        $total_bimbingan = Magang::where('dosen_id', Auth::id())->count();
-        
-        return view('dosen.dashboard', compact('total_bimbingan'));
+        $dosenId = Auth::id();
+
+        $magangs = Magang::with('mahasiswa')
+    ->where('dosen_id', Auth::id())
+    ->get();
+
+        $total_bimbingan = $magangs->count();
+
+        return view('dosen.dashboard', [
+            'total_bimbingan' => $total_bimbingan,
+            'magangs' => $magangs
+        ]);
     }
 }

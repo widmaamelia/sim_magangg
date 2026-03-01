@@ -6,23 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('magangs', function (Blueprint $table) {
-            //
+            // Kolom ini wajib ada agar update nilai dari Dosen berhasil
+            $table->integer('angka_nilai')->nullable()->after('dosen_id');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('magangs', function (Blueprint $table) {
-            //
+            $table->dropColumn('angka_nilai');
         });
     }
 };

@@ -12,10 +12,10 @@
         </div>
     @endif
 
-    <div class="card shadow-sm border-0">
+    {{-- <div class="card shadow-sm border-0">
         <div class="card-header bg-white py-3 border-bottom">
             <h5 class="fw-bold mb-0 text-primary">Daftar Pengajuan Magang</h5>
-        </div>
+        </div> --}}
         {{-- Navigasi Filter Kelas --}}
 <div class="mb-4">
     <div class="btn-group shadow-sm" role="group">

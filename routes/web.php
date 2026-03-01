@@ -10,6 +10,9 @@ use App\Http\Controllers\Mahasiswa\LogbookController;
 use App\Http\Controllers\Mahasiswa\PengajuanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PengajuanController as AdminPengajuanController;
+use App\Http\Controllers\Admin\SidangController as AdminSidangController;
+use App\Http\Controllers\Mahasiswa\MahasiswaSidangController;
+use App\Http\Controllers\Mahasiswa\SidangController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -49,6 +52,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     // Pilih salah satu saja untuk pembimbing (disarankan yang bawah agar lebih deskriptif)
     Route::put('/pengajuan/{id}/tentukan-pembimbing', [AdminPengajuanController::class, 'tentukanPembimbing'])
         ->name('pengajuan.tentukan-pembimbing');
+
+    Route::get('/sidang', [AdminSidangController::class, 'index'])->name('sidang.index');
+    Route::get('/sidang/{id}/edit', [AdminSidangController::class, 'edit'])->name('sidang.edit'); // Ini yang tadi hilang!
+    Route::put('/sidang/{id}', [AdminSidangController::class, 'update'])->name('sidang.update');
+
+    
 });
 // --- ROUTE DOSEN (Hanya Role Dosen) ---
 Route::middleware(['auth', 'role:dosen'])->prefix('dosen')->name('dosen.')->group(function () {
@@ -70,7 +79,9 @@ Route::middleware(['auth', 'role:dosen'])->prefix('dosen')->name('dosen.')->grou
     // ✅ TAMBAHKAN ATAU PERBAIKI BARIS INI:
     Route::post('/monitoring/logbook/review/{id}', [MonitoringController::class, 'reviewLogbook'])
         ->name('logbook.updateStatus');
-        
+    
+   
+    
 
     // PERBAIKAN PENILAIAN: Samakan polanya
     Route::get('/penilaian/create/{id}', [PenilaianController::class, 'create'])
@@ -88,4 +99,5 @@ Route::middleware(['auth', 'role:mahasiswa'])->prefix('mahasiswa')->name('mahasi
     // Alamat Fitur Utama (Ini yang tadi bikin error)
     Route::resource('pengajuan', PengajuanController::class);
     Route::resource('logbook', LogbookController::class);
+    Route::resource('sidang', SidangController::class);
 });
